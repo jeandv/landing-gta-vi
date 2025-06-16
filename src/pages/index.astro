@@ -11,7 +11,7 @@ import LogoCutted from '@/assets/logo-cutted.svg';
   <section id='logo-mask' class='fixed top-0 w-full h-screen'>
     <picture
       id='hero-key'
-      class='h-screen scale-125 block overflow-hidden fixed'
+      class='h-screen scale-125 block overflow-x-hidden fixed'
     >
       <img
         id='hero-key-logo'
@@ -24,6 +24,10 @@ import LogoCutted from '@/assets/logo-cutted.svg';
         class='w-full h-full object-cover'
       />
     </picture>
+    <div
+      class='flex flex-col items-center justify-between h-screen px-20 py-16 w-full'
+    >
+    </div>
   </section>
 
   <div
@@ -54,3 +58,18 @@ import LogoCutted from '@/assets/logo-cutted.svg';
     </footer>
   </div>
 </Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      scrub: 1,
+    },
+  });
+
+  tl.to('#hero-key-logo', { opacity: 0, duration: 0.01 });
+</script>
