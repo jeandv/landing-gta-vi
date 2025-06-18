@@ -71,5 +71,8 @@ import LogoCutted from '@/assets/logo-cutted.svg';
     },
   });
 
-  tl.to('#hero-key-logo', { opacity: 0, duration: 0.01 });
+  tl.to('#hero-key', { duration: 1, scale: 1 })
+    .to('#hero-key-logo', { opacity: 0 }, '<')
+    .to('#hero-footer', { opacity: 0 }, '<')
+    .to('#hero-play-button', { opacity: 0 }, "<")
 </script>
