@@ -8,27 +8,29 @@ import LogoCutted from '@/assets/logo-cutted.svg';
 ---
 
 <Layout>
-  <section id='logo-mask' class='fixed top-0 w-full h-screen'>
-    <picture
-      id='hero-key'
-      class='h-screen scale-125 block overflow-x-hidden fixed'
-    >
-      <img
-        id='hero-key-logo'
-        src={HeroKeylogo.src}
-        class='absolute w-full h-full object-cover'
-      />
-      <img
-        id='hero-key-logo-background'
-        src={HeroKeybackgrouned.src}
-        class='w-full h-full object-cover'
-      />
-    </picture>
-    <div
-      class='flex flex-col items-center justify-between h-screen px-20 py-16 w-full'
-    >
-    </div>
-  </section>
+  <div id='logo-mask' class='fixed top-0 w-full h-screen'>
+    <section id='logo-mask' class='fixed top-0 w-full h-screen'>
+      <picture
+        id='hero-key'
+        class='h-screen scale-125 block overflow-x-hidden fixed'
+      >
+        <img
+          id='hero-key-logo'
+          src={HeroKeylogo.src}
+          class='absolute w-full h-full object-cover'
+        />
+        <img
+          id='hero-key-logo-background'
+          src={HeroKeybackgrouned.src}
+          class='w-full h-full object-cover'
+        />
+      </picture>
+      <div
+        class='flex flex-col items-center justify-between h-screen px-20 py-16 w-full'
+      >
+      </div>
+    </section>
+  </div>
 
   <div
     class='fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full'
@@ -59,6 +61,16 @@ import LogoCutted from '@/assets/logo-cutted.svg';
   </div>
 </Layout>
 
+<style>
+  #logo-mask {
+    background: white;
+    mask-image: url('/logo-stack.svg');
+    mask-position: center 25%;
+    mask-repeat: no-repeat;
+    mask-size: clamp(5000vh, 3500%, 0vh);
+  }
+</style>
+
 <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -74,5 +86,13 @@ import LogoCutted from '@/assets/logo-cutted.svg';
   tl.to('#hero-key', { duration: 1, scale: 1 })
     .to('#hero-key-logo', { opacity: 0 }, '<')
     .to('#hero-footer', { opacity: 0 }, '<')
-    .to('#hero-play-button', { opacity: 0 }, "<")
+    .to('#hero-play-button', { opacity: 0 }, '<')
+    .to(
+      '#logo-mask',
+      {
+        maskSize: 'clamp(20vh, 25%, 30vh)',
+      },
+      0.15
+    )
+    .to('#hero-key', { duration: 0.2, opacity: 0 }, 0.4)
 </script>
